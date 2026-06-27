@@ -1,19 +1,77 @@
+# Dependencies
 node_modules/
 
-# don't commit generated builds or env files
-src/client/*.min.*
-src/client/hammerhead.js
-src/client/worker-hammerhead.js
-src/client/transport-worker.js
+# Environment variables
 .env
+.env.local
+.env.*
 
-# don't commit session and cache data
-sessions/*
-cache-js/*
+# Logs
+*.log
 
-# but commit the empty folders
-!sessions/.gitkeep
-!cache-js/.gitkeep
+# Coverage reports
+coverage/
+htmlcov/
+.coverage
 
-# ignore any custom configurations
-/config.js
+# Python specific
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.venv/
+pip-log.txt
+pip-delete-this-directory.txt
+.tox/
+.coverage*
+.nocoverage*
+
+# Build outputs
+dist/
+build/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*.tmp
+
+# OS generated
+.DS_Store
+Thumbs.db
+
+# Testing
+.pytest_cache/
+.mypy_cache/
+.hypothesis/
+
+# Compression files
+*.zip
+*.gz
+*.tar
+*.tgz
+*.bz2
+*.xz
+*.7z
+*.rar
+*.zst
+*.lz4
+*.lzh
+*.cab
+*.arj
+*.rpm
+*.deb
+*.Z
+*.lz
+*.lzo
+*.tar.gz
+*.tar.bz2
+*.tar.xz
+*.tar.zst

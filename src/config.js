@@ -1,7 +1,7 @@
 const path = require('path');
 const fs = require('fs');
 const os = require('os');
-const RammerheadJSMemCache = require('./classes/RammerheadJSMemCache.js');
+// const RammerheadJSMemCache = require('./classes/RammerheadJSMemCache.js');
 const RammerheadJSFileCache = require('./classes/RammerheadJSFileCache.js');
 
 const enableWorkers = os.cpus().length !== 1;
@@ -63,7 +63,18 @@ module.exports = {
     //     // 'x-frame-options': (originalHeaderValue) => '',
     //     'x-frame-options': null, // set to null to tell rammerhead that you want to delete it
     // },
-    rewriteServerHeaders: {},
+    rewriteServerHeaders: {
+        // Security improvements: remove potentially dangerous headers
+        'x-powered-by': null, // Hide server technology
+        'server': null, // Hide server software
+        'x-frame-options': null, // Allow embedding if needed
+        'cross-origin-opener-policy': null, // Remove restrictive policies
+        'cross-origin-resource-policy': null,
+        // Add security headers for better protection
+        'x-content-type-options': () => 'nosniff', // Prevent MIME type sniffing
+        'x-xss-protection': () => '1; mode=block', // XSS filter
+        'referrer-policy': () => 'strict-origin-when-cross-origin', // Better referrer control
+    },
 
     //// SESSION STORE CONFIG ////
 
